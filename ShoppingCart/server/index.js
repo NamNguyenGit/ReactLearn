@@ -1,62 +1,31 @@
-const express = require('express');
-const mongoose = require('mongoose');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const authRoute = require("./routes/auth");
+// const URL = 'mongodb+srv://mongo-user:<password>@cluster-mongo-test.ieqay.mongodb.net/myFirstDatabase?retryWrites=true&w=majoritys '
+// const URL =
+//   "mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@shophair.akemf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("Connected to mongoDB");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+connectDB();
+
 const app = express();
-
-
-
 app.use(express.json());
+app.use("/api/auth", authRoute);
 
-
-mongoose.connect("mongodb://localhost:27017/CutHairShop",{useNewUrlParser: true} ,(err)=>{
-    if(!err) console.log('db connected');
-    else console.log('dberror');
-})
-
-const ServiceSchema = new mongoose.Schema({
-    serviceName:{
-        type: String,
-        required: true,
-    },
-    servicePrice:{
-        type: Number,
-        required: true,
-    },
-});
-
-const newModel = new mongoose.model("Service",ServiceSchema);
-// const data = new newModel({
-//     serviceName:'undercut',servicePrice:10000
-// });
-// data.save();
-
-const data = async()=>{
-    const result = await newModel.insertMany([{
-        serviceName:'shortcriff',servicePrice:10000
-    },{
-        serviceName:'clippercut',servicePrice:10000
-    },
-    {
-        serviceName:'longtaper',servicePrice:10000
-    },
-    {
-        serviceName:'bob',servicePrice:10000
-    }]);
-    console.log(result);
-    }
-    data();
-
-// app.get("/", async (req,res)=>{
-//     const service = new ServiceModel({ serviceName:"Undercute",servicePrice: 100000});
-
-//     try{
-//         await service.save();
-//     }catch(err){
-//         console.log(err)
-//     }
-
-// });
-
-
-app.listen(3001,()=>{
-    console.log("Server running");
-});
+const PORT = process.env.APP_PORT;
+app.listen(PORT, () => console.log("Server run"));
