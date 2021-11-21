@@ -14,3 +14,12 @@ Content-Type: application/json
     "username": "nam7",
     "password": "nam"
 }
+
+### 
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+
+{
+    "ServiceName": "Undercut",
+    "ServicePrice": "100000"
+}
