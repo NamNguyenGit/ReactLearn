@@ -7,26 +7,22 @@ const jwt = require("jsonwebtoken");
 // @route POST api/auth/register
 // @desc Resiter user
 // @@access Public
-
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
   //simple validate
-
   if (!username || !password) {
     return res
       .status(400)
       .json({ success: false, message: "Missing username and/or password" });
   }
-
   try {
     //check for existing user
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).exec();
     if (user)
       return res
         .status(400)
         .json({ success: false, message: "Username has already taken" });
-
     //all good
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
@@ -35,13 +31,14 @@ router.post("/register", async (req, res) => {
       password: hashPassword,
     });
     await newUser.save();
-
     //Return token
     const accessToken = jwt.sign(
       { userId: newUser._id },
       process.env.ACCESS_TOKEN_SECRET
     );
-    res.status(201).json({ success: true, message: "Register succesfully", accessToken });
+    res
+      .status(201)
+      .json({ success: true, message: "Register succesfully", accessToken });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, message: "Internal server error" });
