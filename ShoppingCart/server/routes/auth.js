@@ -67,13 +67,13 @@ router.post("/login", async (req, res) => {
         .status(400)
         .json({ success: false, message: "Incorrect username" });
 
-    // usernam found
-    const passwordValid = await bcrypt.compare(user.password, password);
+    // username found
+    const passwordValid = await bcrypt.compareSync(password,user.password );
     if (!passwordValid) {
-      // return console.log(user.password, password);
-      return res
-        .status(400)
-        .json({ success: false, message: "Incorrect password" });
+      return console.log(user.password, password);
+      // return res
+      //   .status(400)
+      //   .json({ success: false, message: "Incorrect password" });
     }
 
     //ALl good

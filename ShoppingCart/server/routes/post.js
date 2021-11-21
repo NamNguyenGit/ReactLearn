@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
+const verifyToken = require("../middleware/auth");
 
 // @route POST api/auth/posts
 // @desc Create posts
 // @@access Private
 
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const { ServiceName, ServicePrice } = req.body;
 
   //Simple validate
@@ -24,7 +25,7 @@ router.post("/", async (req, res) => {
 
     res.json({
       success: true,
-      message: "Woah! New trend budyy!",
+      message: "Woah! New trend buddy!",
       post: newPost,
     });
   } catch (error) {
