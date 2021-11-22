@@ -18,9 +18,23 @@ Content-Type: application/json
 ### 
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5YzQyZWFmYWE5OTg4NjU1OTYzZjMiLCJpYXQiOjE2Mzc1NTU1MTN9.c3xZyHWEjgED2hqBXjp3fJ6e4u6tPArJS-w-dqsJxw0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5YzQyZWFmYWE5OTg4NjU1OTYzZjMiLCJpYXQiOjE2Mzc1NzI4NTZ9.0D7NjapT37tnOeL7LbQ3kIkFdM9puxxV6gt0E0rtTUc
 
 {
-    "ServiceName": "Undercut43",
-    "ServicePrice": "100000"
+    "ServiceName": "ShortCryff",
+    "ServicePrice": "200000"
+}
+
+###
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5YzQyZWFmYWE5OTg4NjU1OTYzZjMiLCJpYXQiOjE2Mzc1NzQ4MzF9.M65agVEdE6sKYtyCDJ-GZYR7Km0OVxF5jHNwg6fKwik
+
+###
+PUT http://localhost:5000/api/posts/619b1e5b6ba3d5c03eeb9e04
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5YzQyZWFmYWE5OTg4NjU1OTYzZjMiLCJpYXQiOjE2Mzc1NzQ4MzF9.M65agVEdE6sKYtyCDJ-GZYR7Km0OVxF5jHNwg6fKwik
+
+{
+    "ServiceName" : "LongCryff",
+    "ServicePrice": "200000"
 }
