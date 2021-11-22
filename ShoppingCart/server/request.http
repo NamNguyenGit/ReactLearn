@@ -2,7 +2,7 @@ POST  http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "nam333",
+    "username": "nam335",
     "password": "nam"
 }
 
@@ -18,8 +18,9 @@ Content-Type: application/json
 ### 
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer asdad
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5YzQyZWFmYWE5OTg4NjU1OTYzZjMiLCJpYXQiOjE2Mzc1NTU1MTN9.c3xZyHWEjgED2hqBXjp3fJ6e4u6tPArJS-w-dqsJxw0
+
 {
-    "ServiceName": "Undercut",
+    "ServiceName": "Undercut43",
     "ServicePrice": "100000"
 }
