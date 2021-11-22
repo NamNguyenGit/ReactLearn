@@ -38,3 +38,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5Y
     "ServiceName" : "LongCryff",
     "ServicePrice": "200000"
 }
+
+
+###
+DELETE  http://localhost:5000/api/posts/619b1e98bf03c4c86bd1adf6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTk5YzQyZWFmYWE5OTg4NjU1OTYzZjMiLCJpYXQiOjE2Mzc1NzQ4MzF9.M65agVEdE6sKYtyCDJ-GZYR7Km0OVxF5jHNwg6fKwik
