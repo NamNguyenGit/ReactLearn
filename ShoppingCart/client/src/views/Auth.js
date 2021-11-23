@@ -1,9 +1,25 @@
-const Auth = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+import LoginForm from "../components/auth/LoginForm";
+import RegisterForm from "../components/auth/RegisterForm";
+const Auth = ({ authRoute }) => {
+  let body;
 
-export default Auth
+  body = (
+    <>
+      {authRoute === "login" && <LoginForm />}
+      {authRoute === "register" && <RegisterForm />}
+    </>
+  );
+  return (
+    <div className="landing">
+      <div className="dark-overlay">
+        <div className="landing-inner">
+          <h1> Make your own Style</h1>
+          <h4> Where hairdressing is holistic.</h4>
+          {body}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Auth;
