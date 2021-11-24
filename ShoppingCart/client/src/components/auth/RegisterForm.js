@@ -9,7 +9,6 @@ const RegisterForm = () => {
         <FormGroup>
           <Form.Control
             style={{ marginTop: 1 + "em" }}
-            className="col-"
             type="text"
             placeholder="Username"
             name="username"

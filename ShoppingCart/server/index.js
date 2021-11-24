@@ -26,6 +26,7 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 const PORT = process.env.APP_PORT;
