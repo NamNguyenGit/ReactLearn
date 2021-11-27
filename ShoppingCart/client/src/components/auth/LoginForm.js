@@ -18,11 +18,20 @@ const LoginForm = () => {
 
   const { username, password } = LoginForm;
 
+  // const login = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const loginData = await loginuser(LoginForm);
+  //     console.log(loginData);
+  //   } catch (error) {
+  //
+  //   }
+  // };
   const login = async (event) => {
     event.preventDefault();
     try {
       const loginData = await loginuser(LoginForm);
-      console.log(loginData);
+      return console.log(loginData);
     } catch (error) {
       console.log(error);
     }
