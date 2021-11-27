@@ -1,13 +1,17 @@
 import Button from "react-bootstrap/Button";
 import FormGroup from "react-bootstrap/esm/FormGroup";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 const LoginForm = () => {
   //Context
   const { loginuser } = useContext(AuthContext);
 
+  //Router
+  const history = useHistory();
+
+  //Local state
   const [LoginForm, setLoginForm] = useState({
     username: "",
     password: "",
@@ -18,20 +22,15 @@ const LoginForm = () => {
 
   const { username, password } = LoginForm;
 
-  // const login = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const loginData = await loginuser(LoginForm);
-  //     console.log(loginData);
-  //   } catch (error) {
-  //
-  //   }
-  // };
   const login = async (event) => {
     event.preventDefault();
     try {
       const loginData = await loginuser(LoginForm);
-      return console.log(loginData);
+      if (loginData.success) {
+        history.push("/home");
+      }else{
+        
+      }
     } catch (error) {
       console.log(error);
     }

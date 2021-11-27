@@ -3,6 +3,24 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const verifyToken = require("../middleware/auth");
+
+// @route GET api/auth
+// @desc Check if user login
+// @ acess Public
+router.get("/", verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    if (!user)
+      return res
+        .status(400)
+        .json({ success: false, message: "User not found" });
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
 
 // @route POST api/auth/register
 // @desc Resiter user
@@ -65,14 +83,14 @@ router.post("/login", async (req, res) => {
     if (!user)
       return res
         .status(400)
-        .json({ success: false, message: "Incorrect username" });
+        .json({ success: false, message: "Incorrect username or password" });
 
     // username found
     const passwordValid = await bcrypt.compareSync(password, user.password);
     if (!passwordValid) {
       return res
         .status(400)
-        .json({ success: false, message: "Incorrect password" });
+        .json({ success: false, message: "Incorrect username or password" });
     }
 
     //ALl good
