@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import TodoItem from "./TodoItem";
 
 const Todos = () => {
   const [todoStates, settodoStates] = useState([
@@ -14,7 +15,7 @@ const Todos = () => {
   return (
     <Fragment>
       {todoStates.map((todo) => {
-        return <p>{todo}</p>;
+        return <TodoItem todoProps={todo} />;
       })}
     </Fragment>
   );
