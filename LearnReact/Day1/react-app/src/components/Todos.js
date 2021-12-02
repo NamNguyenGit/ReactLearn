@@ -3,9 +3,18 @@ import TodoItem from "./TodoItem";
 
 const Todos = () => {
   const [todoStates, settodoStates] = useState([
-    "Eat breakfast",
-    "Do homework",
-    "Go to sleep",
+    {
+      title: "Eat breakfast",
+      status: false,
+    },
+    {
+      title: "Do homework",
+      status: false,
+    },
+    {
+      title: "Go to sleep",
+      status: false,
+    },
   ]);
   //   const allTodos = [];
 
