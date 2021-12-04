@@ -34,10 +34,22 @@ const Todos = () => {
     settodoStates(newTodo);
   };
 
+  const deletetodo = (id) => {
+    const newTodos = todoStates.filter((todo) => todo.id !== id);
+    settodoStates(newTodos);
+  };
+
   return (
     <Fragment>
       {todoStates.map((todo) => {
-        return <TodoItem todoProps={todo} markDonefunction={markDone} />;
+        return (
+          <TodoItem
+            key={todo.id}
+            todoProps={todo}
+            markDonefunction={markDone}
+            deleteTodofunction={deletetodo}
+          />
+        );
       })}
     </Fragment>
   );

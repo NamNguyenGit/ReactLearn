@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const TodoItem = (props) => {
   const todo = props.todoProps;
   const markComplete = props.markDonefunction;
+  const deleteTodo = props.deleteTodofunction;
   //Style
   const todoItemStyle = {
     background: "#f4f4f4",
@@ -30,7 +31,9 @@ const TodoItem = (props) => {
         checked={todo.status}
       />
       {todo.title}
-      <Button style={deletebtn}>Delete</Button>
+      <Button onClick={deleteTodo.bind(this, todo.id)} style={deletebtn}>
+        Delete
+      </Button>
     </p>
   );
 };
@@ -39,6 +42,7 @@ const TodoItem = (props) => {
 TodoItem.propTypes = {
   todoProps: PropTypes.object.isRequired,
   markDonefunction: PropTypes.func.isRequired,
+  deleteTodofunction: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
