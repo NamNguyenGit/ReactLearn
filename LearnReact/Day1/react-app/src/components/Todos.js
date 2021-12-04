@@ -1,21 +1,22 @@
 import React, { Fragment, useState } from "react";
 import AddTodo from "./Add";
 import TodoItem from "./TodoItem";
+import { v4 as uuidv4 } from "uuid";
 
 const Todos = () => {
   const [todoStates, settodoStates] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       title: "Eat breakfast",
       status: false,
     },
     {
-      id: 2,
+      id: uuidv4(),
       title: "Do homework",
       status: false,
     },
     {
-      id: 3,
+      id: uuidv4(),
       title: "Go to sleep",
       status: false,
     },
@@ -40,9 +41,21 @@ const Todos = () => {
     settodoStates(newTodos);
   };
 
+  const addtodo = (title) => {
+    const newTodoss = [
+      ...todoStates,
+      {
+        id: uuidv4(),
+        title,
+        status: false,
+      },
+    ];
+    settodoStates(newTodoss);
+  };
+
   return (
     <Fragment>
-      <AddTodo></AddTodo>
+      <AddTodo addtodofunc={addtodo}></AddTodo>
       {todoStates.map((todo) => {
         return (
           <TodoItem
