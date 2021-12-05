@@ -10,7 +10,7 @@ const TodoItem = (props) => {
     background: "#f4f4f4",
     padding: "10px",
     borderBottom: "1px #ccc dotted",
-    textDecoration: todo.status ? "line-through" : "none",
+    textDecoration: todo.completed ? "line-through" : "none",
   };
 
   const deletebtn = {
@@ -28,7 +28,7 @@ const TodoItem = (props) => {
       <input
         type="checkbox"
         onChange={markComplete.bind(this, todo.id)}
-        checked={todo.status}
+        checked={todo.completed}
       />
       {todo.title}
       <Button onClick={deleteTodo.bind(this, todo.id)} style={deletebtn}>
